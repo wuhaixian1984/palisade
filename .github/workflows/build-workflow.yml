@@ -86,7 +86,7 @@ jobs:
           name: .release
           path: .release
 
-      - name: Pin CID to Crust
+      - name: Pin CID to Crust Network
         id: pintocrust
         uses: crustio/ipfs-crust-action@v1.0.8
         with:
