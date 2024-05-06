@@ -86,6 +86,13 @@ jobs:
           name: .release
           path: .release
 
+      - name: Pin CID to Crust
+        id: pintocrust
+        uses: crustio/ipfs-crust-action@v1.0.8
+        with:
+          cid: $(cat .release)
+          seeds: ${{ secrets.CRUST_SEEDS }}
+
       - name: Add Deploy Comment
         uses: machine-learning-apps/pr-comment@master
         env:
