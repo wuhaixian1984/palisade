@@ -93,10 +93,10 @@ jobs:
           cid: $(cat .release)
           seeds: ${{ secrets.CRUST_SEEDS }}
 
-      - name: Add Deploy Comment
-        uses: machine-learning-apps/pr-comment@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          path: .release-notes
-        if: ${{ github.event_name == 'pull_request' }}
+      # - name: Add Deploy Comment
+      #   uses: machine-learning-apps/pr-comment@master
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     path: .release-notes
+      #   if: ${{ github.event_name == 'pull_request' }}
