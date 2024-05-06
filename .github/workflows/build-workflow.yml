@@ -89,11 +89,13 @@ jobs:
 
       - name: Get CID
         id: getcid
-        run: echo "::set-output name=cid::$(cat .release)"
+        run: echo "cid=$(cat .release)" >> $GITHUB_OUTPUT
+        continue-on-error: true
 
       - name: Pin CID to Crust Network
         id: pintocrust
-        uses: crustio/ipfs-crust-action@v1.0.8
+        uses: crustio/ipfs-crust-action@v2.0.7
+        continue-on-error: true
         with:
           cid: ${{ steps.getcid.outputs.cid }}
           seeds: ${{ secrets.CRUST_SEEDS }}
