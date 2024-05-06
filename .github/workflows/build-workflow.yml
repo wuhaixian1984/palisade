@@ -87,11 +87,15 @@ jobs:
           name: .release
           path: .release
 
+      - name: Get CID
+        id: getcid
+        run: echo "::set-output name=cid::$(cat .release)"
+
       - name: Pin CID to Crust Network
         id: pintocrust
         uses: crustio/ipfs-crust-action@v1.0.8
         with:
-          cid: $(cat .release)
+          cid: ${{ steps.getcid.outputs.cid }}
           seeds: ${{ secrets.CRUST_SEEDS }}
 
       # - name: Add Deploy Comment
